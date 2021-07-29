@@ -7,7 +7,7 @@ x-substrate-adapter-def: &substrate-adapter-def
   env_file:
     - ./adapter.env
   networks:
-    - pp-substrate
+    - substrate
 #   depends_on:
 #     - chain
 
@@ -24,7 +24,7 @@ services:
 #       - "chain:/root/.local"
 #     command: bash -c "/node-template --dev --ws-external"
 #     networks:
-#       - pp-substrate
+#       - substrate
 
 
   substrate-adapter1:
@@ -55,5 +55,5 @@ services:
 
 
 networks:
-  pp-substrate:
-    name: pp-substrate
+  substrate:
+    name: substrate
