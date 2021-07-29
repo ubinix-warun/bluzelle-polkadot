@@ -1,3 +1,6 @@
 [submodule "substrate-node-template"]
 	path = substrate-node-template
 	url = https://github.com/ubinix-warun/substrate-node-template.git
+[submodule "substrate-adapter"]
+	path = substrate-adapter
+	url = https://github.com/ubinix-warun/substrate-adapter.git
