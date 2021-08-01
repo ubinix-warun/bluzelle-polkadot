@@ -1,12 +1,6 @@
 [submodule "substrate-node-template"]
 	path = substrate-node-template
 	url = https://github.com/ubinix-warun/substrate-node-template.git
-[submodule "substrate-adapter"]
-	path = substrate-adapter
-	url = https://github.com/ubinix-warun/substrate-adapter.git
-[submodule "external-initiator"]
-	path = external-initiator
-	url = https://github.com/ubinix-warun/external-initiator.git
 [submodule "offchain-worker"]
 	path = offchain-worker
 	url = https://github.com/ubinix-warun/offchain-worker
