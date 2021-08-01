@@ -10,3 +10,6 @@
 [submodule "offchain-worker"]
 	path = offchain-worker
 	url = https://github.com/ubinix-warun/offchain-worker
+[submodule "substrate-front-end-template"]
+	path = substrate-front-end-template
+	url = https://github.com/ubinix-warun/substrate-front-end-template.git
