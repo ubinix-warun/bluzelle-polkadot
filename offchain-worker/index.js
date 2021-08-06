@@ -84,7 +84,15 @@ async function main() {
 
     // Listen for bluzelle.OracleRequest events
     api.query.system.events((events) => {
-        events.forEach(({ event })  => {
+        console.log(`\nReceived ${events.length} events:`);
+        events.forEach(({ event })  => { 
+
+          const types = event.typeDef;
+
+          // Show what we are busy with
+          console.log(`\t${event.section}:${event.method}:: ...`);
+          console.log(`\t\t${event.meta.documentation.toString()}`);
+
           if (event.section == "bluzelle" && event.method == "OracleRequest") {
             const id = event.data[2].toString();
             const value = Math.floor(Math.random() * Math.floor(100));
@@ -100,6 +108,10 @@ async function main() {
             // Subscribe
             //  ... < Update
 
+            event.data.forEach((data, index) => {
+              console.log(`\t\t\t${index} ${types[index].type}: ${data.toString()}`);
+            });
+            
 
             api.tx.bluzelle.callback(parseInt(id), result).signAndSend(operatorAccount, async ({ events = [], status }) => {
                 if (status.isFinalized) {
@@ -115,9 +127,9 @@ async function main() {
 
     await registerOperatorIfNeeded(api, operatorAccount);
 
-    // // Then simulate a call from alice
-    // await api.tx.example.sendRequest(operatorAccount.address, "").signAndSend(aliceAccount);
-    // console.log(`Request sent`);
+    // Then simulate a call from alice
+    await api.tx.example.sendRequest(operatorAccount.address, "").signAndSend(aliceAccount);
+    console.log(`Request sent`);
 
     // (async () => {
     //   const bz = bluzelle(config);
