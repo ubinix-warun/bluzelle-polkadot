@@ -5,6 +5,25 @@ const types = require('../substrate-node-template/types.json');
 
 const PHRASE = 'entire material egg meadow latin bargain dutch coral blood melt acoustic thought';
 
+// const {bluzelle} = require('bluzelle');
+
+// https://github.com/bluzelle/curium/tree/aven_stargate/sdk/ts
+
+// // {
+// //   "height":"0",
+// //   "result":
+// //     {
+// //       "address":"bluzelle1vcmnpsl5qd5jn0seaj5jlxzmakrdh0ta6dr2lt",
+// //       "mnemonic":"depart find matter patient step resemble blade memory battle explain post small adult fiscal forum permit mango doctor thunder narrow behind crew chat feature"
+// //     }
+// //   }
+
+// const config = {
+//     mnemonic: "depart find matter patient step resemble blade memory battle explain post small adult fiscal forum permit mango doctor thunder narrow behind crew chat feature",
+//     endpoint: "http://testnet.public.bluzelle.com:1317",
+//     uuid: Date.now().toString()
+// };
+
 async function fundAccountIfNeeded(api, senderAccount, receiverAddress) {
     return new Promise(async (resolve) => {
         const balance = await api.query.system.account(receiverAddress);
@@ -74,6 +93,14 @@ async function main() {
 
             // Get Param => Send Bluzelle
 
+            // Create and Value
+            // Read => Result
+            // Remove
+
+            // Subscribe
+            //  ... < Update
+
+
             api.tx.bluzelle.callback(parseInt(id), result).signAndSend(operatorAccount, async ({ events = [], status }) => {
                 if (status.isFinalized) {
                   const updatedResult = await api.query.example.result();
@@ -88,9 +115,17 @@ async function main() {
 
     await registerOperatorIfNeeded(api, operatorAccount);
 
-    // Then simulate a call from alice
-    await api.tx.example.sendRequest(operatorAccount.address, "").signAndSend(aliceAccount);
-    console.log(`Request sent`);
+    // // Then simulate a call from alice
+    // await api.tx.example.sendRequest(operatorAccount.address, "").signAndSend(aliceAccount);
+    // console.log(`Request sent`);
+
+    // (async () => {
+    //   const bz = bluzelle(config);
+  
+    //   await bz.create("somekey", "somevalue", {'gas_price': 10})
+    //   console.log(await bz.read("somekey"))
+      
+    // })();
   
 }
 
