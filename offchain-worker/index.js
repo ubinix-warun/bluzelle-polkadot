@@ -2,6 +2,7 @@ const {ApiPromise, Keyring, WsProvider} = require('@polkadot/api');
 const {cryptoWaitReady} = require('@polkadot/util-crypto');
 // const feedConfigs = require('./feeds.json');
 const types = require('../substrate-node-template/types.json');
+const tuple = require('fdb-tuple')
 
 const PHRASE = 'entire material egg meadow latin bargain dutch coral blood melt acoustic thought';
 
@@ -110,6 +111,26 @@ async function main() {
 
             event.data.forEach((data, index) => {
               console.log(`\t\t\t${index} ${types[index].type}: ${data.toString()}`);
+              if(index == 5) {
+                // console.log(new Buffer.from(data).toJSON());
+                // console.log(data.toJSON());
+                // console.log(new Buffer.from(data));
+                // var temp = JSON.parse(data.toString());
+                // console.log(temp)
+                // console.log(new Uint8Array(data).toString());
+                // console.log(JSON.parse(new Uint8Array(data)));
+                // get,https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD,path,DRAW.ETH.USD.PRICE,times,100000000
+                // console.log(tuple.unpack(new Buffer.from(data)))
+
+                // get,https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD,path,DRAW.ETH.USD.PRICE,times,100000000
+                // 0x 0c 676574 
+                //    2501 68747470733a2f2f6d696e2d6170692e63727970746f636f6d706172652e636f6d2f646174612f70726963656d756c746966756c6c3f6673796d733d45544
+                //    8267473796d733d5553441070617468445241572e4554482e5553442e50524943451474696d657324313030303030303030
+
+              }
+              if(index == 6) {
+                console.log("\t\t\t\t" +new Buffer.from(data).toString());
+              }
             });
             
 
